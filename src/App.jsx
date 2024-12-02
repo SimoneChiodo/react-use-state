@@ -18,7 +18,7 @@ function App() {
             id: 1,
             nome: "HTML",
             descrizione: "linguaggio 1",
-            activeState: true,
+            activeState: false,
         },
         {
             id: 2,
@@ -54,8 +54,8 @@ function App() {
 
     // Reactive Card-Info
     const [cardInfo, setCardInfo] = useState({
-        titolo: linguaggi[0].nome,
-        descrizione: linguaggi[0].descrizione,
+        titolo: "Nessun linguaggio selezionato",
+        descrizione: "",
     });
 
     // Function: Update Linguaggi Status
