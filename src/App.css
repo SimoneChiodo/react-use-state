@@ -1,3 +1,9 @@
 h1 {
     text-decoration: underline;
 }
+
+.card-border {
+    border: 2px solid darkgray;
+    border-radius: 15px;
+    padding: 1rem;
+}

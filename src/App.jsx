@@ -49,13 +49,19 @@ function App() {
             {/* Flex Container */}
             <main className="d-flex flex-column align-items-center mt-5">
                 {/* Title */}
-                <h1>Learn Web development</h1>
+                <h1 className="mt-3 mb-4">Learn Web development</h1>
 
                 {/* Buttons Container */}
-                <div className="mt-4">
+                <div className="mt-5">
                     {linguaggi.map((linguaggio) => (
                         <Button key={linguaggio.id} btnText={linguaggio.nome} />
                     ))}
+                </div>
+
+                {/* Description Card */}
+                <div className="card-border text-start w-75 mt-3">
+                    <h4>{linguaggi[0].nome}</h4>
+                    <p>{linguaggi[0].descrizione}</p>
                 </div>
             </main>
         </>
