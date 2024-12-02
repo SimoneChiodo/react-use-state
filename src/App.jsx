@@ -14,7 +14,7 @@ function App() {
     const linguaggi = [
         {
             id: 1,
-            nome: "html",
+            nome: "HTML",
             descrizione: "linguaggio 1",
         },
         {
@@ -46,10 +46,18 @@ function App() {
 
     return (
         <>
-            <h1>Hello World!</h1>
-            {linguaggi.map((linguaggio) => (
-                <Button />
-            ))}
+            {/* Flex Container */}
+            <main className="d-flex flex-column align-items-center mt-5">
+                {/* Title */}
+                <h1>Learn Web development</h1>
+
+                {/* Buttons Container */}
+                <div className="mt-4">
+                    {linguaggi.map((linguaggio) => (
+                        <Button key={linguaggio.id} btnText={linguaggio.nome} />
+                    ))}
+                </div>
+            </main>
         </>
     );
 }

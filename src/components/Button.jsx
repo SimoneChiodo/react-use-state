@@ -1,8 +1,8 @@
-export default function () {
+export default function ({ btnText }) {
     return (
         <>
-            <button type="button" class="btn btn-primary m-3">
-                Primary
+            <button type="button" className="btn btn-primary m-3">
+                {btnText}
             </button>
         </>
     );
