@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // Components
 import Button from "./components/Button";
+import Card from "./components/Card";
 
 // Bootstrap CSS
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +12,7 @@ import "./App.css";
 function App() {
     const [count, setCount] = useState(0);
 
+    // Reactive Linguaggi
     const [linguaggi, setLinguaggi] = useState([
         {
             id: 1,
@@ -50,23 +52,39 @@ function App() {
         },
     ]);
 
-    function languagesButtonStatusChange(index) {
-        const updatedData = [...linguaggi];
+    // Reactive Card-Info
+    const [cardInfo, setCardInfo] = useState({
+        titolo: linguaggi[0].nome,
+        descrizione: linguaggi[0].descrizione,
+    });
 
-        updatedData.map((element, actualIndex) => {
+    // Function: Update Linguaggi Status
+    function languagesButtonStatusChange(index) {
+        // Update Linguaggi Array
+        const updatedLinguaggi = [...linguaggi];
+
+        updatedLinguaggi.map((element, actualIndex) => {
             actualIndex === index
                 ? (element.activeState = true)
                 : (element.activeState = false);
         });
 
-        setLinguaggi(updatedData);
+        setLinguaggi(updatedLinguaggi);
+
+        // Update Card-Info Array
+        const updatedCardInfo = cardInfo;
+
+        updatedCardInfo.titolo = updatedLinguaggi[index].nome;
+        updatedCardInfo.descrizione = updatedLinguaggi[index].descrizione;
+
+        setCardInfo(updatedCardInfo);
     }
 
     return (
         <>
             {/* Flex Container */}
             <main className="d-flex flex-column align-items-center mt-5">
-                {/* Title */}
+                {/* titolo */}
                 <h1 className="mt-3 mb-4">Learn Web development</h1>
 
                 {/* Buttons Container */}
@@ -82,11 +100,11 @@ function App() {
                     ))}
                 </div>
 
-                {/* Description Card */}
-                <div className="card-border text-start w-75 mt-3">
-                    <h4>{linguaggi[0].nome}</h4>
-                    <p>{linguaggi[0].descrizione}</p>
-                </div>
+                {/* Card */}
+                <Card
+                    title={cardInfo.titolo}
+                    description={cardInfo.descrizione}
+                />
             </main>
         </>
     );
