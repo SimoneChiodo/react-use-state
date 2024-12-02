@@ -11,38 +11,56 @@ import "./App.css";
 function App() {
     const [count, setCount] = useState(0);
 
-    const linguaggi = [
+    const [linguaggi, setLinguaggi] = useState([
         {
             id: 1,
             nome: "HTML",
             descrizione: "linguaggio 1",
+            activeState: true,
         },
         {
             id: 2,
             nome: "CSS",
             descrizione: "linguaggio 2",
+            activeState: false,
         },
         {
             id: 3,
             nome: "JavaScript",
             descrizione: "linguaggio 3",
+            activeState: false,
         },
         {
             id: 4,
             nome: "Node.js",
             descrizione: "linguaggio 4",
+            activeState: false,
         },
         {
             id: 5,
             nome: "Express",
             descrizione: "linguaggio 5",
+            activeState: false,
         },
         {
             id: 6,
             nome: "ReactJS",
             descrizione: "linguaggio 6",
+            activeState: false,
         },
-    ];
+    ]);
+
+    function languagesButtonStatusChange(index) {
+        const updatedData = [...linguaggi];
+
+        updatedData.map((element, actualIndex) => {
+            actualIndex === index
+                ? (element.activeState = true)
+                : (element.activeState = false);
+        });
+
+        setLinguaggi(updatedData);
+    }
 
     return (
         <>
@@ -53,8 +71,14 @@ function App() {
 
                 {/* Buttons Container */}
                 <div className="mt-5">
-                    {linguaggi.map((linguaggio) => (
-                        <Button key={linguaggio.id} btnText={linguaggio.nome} />
+                    {linguaggi.map((linguaggio, index) => (
+                        <Button
+                            key={linguaggio.id}
+                            index={index}
+                            btnText={linguaggio.nome}
+                            activeState={linguaggio.activeState}
+                            handleStatusChange={languagesButtonStatusChange}
+                        />
                     ))}
                 </div>
 

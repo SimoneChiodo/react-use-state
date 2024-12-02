@@ -1,7 +1,13 @@
-export default function ({ btnText }) {
+export default function ({ index, btnText, activeState, handleStatusChange }) {
+    const color = activeState ? "btn-warning" : "btn-primary";
+
     return (
         <>
-            <button type="button" className="btn btn-primary m-3">
+            <button
+                onClick={() => handleStatusChange(index)}
+                type="button"
+                className={"btn m-3 " + color}
+            >
                 {btnText}
             </button>
         </>
